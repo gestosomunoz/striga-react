@@ -1,0 +1,2 @@
+* Responsive app
+* Extend euro
