@@ -44,6 +44,10 @@ button:hover {
     background-color: #0056b3;
 }
 
+.purchase-details {
+    padding: 4px;
+    font-size: 13px;
+}
 
 .input-container {
     display: flex;
