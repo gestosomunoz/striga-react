@@ -26,9 +26,6 @@ h1 {
 }
 
 .qr-code {
-    width: 100px;
-    height: 100px;
-    background-color: #f0f0f0;
     margin: 20px auto;
 }
 
@@ -44,10 +41,15 @@ h1 {
     justify-content: center;
 }
 
-.code {
-    font-size: 20px;
+.invoice-code {
+    font-size: 15px;
     font-weight: bold;
     margin-right: 10px;
+    max-width: 400px; 
+    white-space: nowrap;
+    overflow-x: auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 .copy-button {
