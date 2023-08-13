@@ -11,7 +11,7 @@ function Invoice() {
   const [qrCodeImage, setQrCodeImage] = useState('');
   const invoiceDataRef = useRef(invoiceData);
   const navigate = useNavigate();
-  
+
   interface InvoiceData {
     transactionId: string;
     invoice: string;
@@ -31,7 +31,7 @@ function Invoice() {
     }
   }
 
-  function getInitialTimer(expiryTimestamp: number) : number {
+  function getInitialTimer(expiryTimestamp: number): number {
     const expiryDate: Date = new Date(expiryTimestamp * 1000);
     const timeDifference = expiryDate.getTime() - new Date().getTime();
     return Math.floor(timeDifference / 1000);
@@ -63,7 +63,7 @@ function Invoice() {
     async function createQRCode(data: string) {
       const qrCodeImageData = await qrcode.toDataURL(data);
       setQrCodeImage(qrCodeImageData)
-    } 
+    }
 
     const storedData = localStorage.getItem('invoiceData');
 
@@ -74,7 +74,7 @@ function Invoice() {
       if (initialCountdown > 0) {
         setCountdown(initialCountdown);
       } else {
-        navigate('/expired')
+        navigate('/confirmation', { state: { success: false } });
       }
       createQRCode(invoiceStored.invoice);
     }
@@ -83,21 +83,24 @@ function Invoice() {
 
   return (
     <div className="invoice-container">
-      <h1>Status: <span> </span></h1>
-      
-      <p className="sub-title">You can use <a href="http://htlc.me">http://htlc.me</a> for paying for the testnet </p>
-      <div className="qr-code">
+      <h1>Almost done!</h1>
+
+      <p className="sub-title">You can use <a href="http://htlc.me">http://htlc.me</a> for paying for the testnet invoice</p>
+      <div className="qr-code-container">
         {qrCodeImage && (
           <img src={qrCodeImage} alt="QR Code" />
         )}
       </div>
       <div className="countdown-timer">Expires in {Math.floor(countdown / 60)} minutes {countdown % 60} seconds</div>
       {invoiceData &&
-        <div className="code-container">
-          <input className="invoice-code" value={invoiceData!.invoice} readOnly></input>
-          <CopyToClipboardButton value={invoiceData!.invoice} />
-        </div>
-      }      
+        <>
+          <div className="order-id">Order id: {invoiceData!.transactionId}</div>
+          <div className="code-container">
+            <input className="invoice-code" value={invoiceData!.invoice} readOnly></input>
+            <CopyToClipboardButton value={invoiceData!.invoice} />
+          </div>
+        </>
+      }
     </div>
   );
 }

@@ -10,13 +10,13 @@
         margin-top: 5px;
     }
 
-    .qr-code {
-        margin: 20px auto;
+    .qr-code-container {
+        margin: 5px;
     }
 
     .countdown-timer {
         color: red;
-        font-size: 18px;
+        font-size: 14px;
         margin-bottom: 10px;
     }
 
@@ -34,5 +34,10 @@
         overflow-x: auto;
         border: 1px solid #ccc;
         border-radius: 20px;
+    }
+    
+    .order-id {
+        font-weight: bold;
+        margin-bottom: 5px;
     }
 }

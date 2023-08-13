@@ -17,8 +17,13 @@ function Exchange() {
         const value = parseFloat(event.target.value);
         setAmountToPay(value);
         // Calculate and set amountToReceive based on your logic here
-        const newAmount = exchangeRates ? value / exchangeRates.buy : 0.0;
-        setAmountToReceive(newAmount);
+        if (!isNaN(value)) {
+            const newAmount = exchangeRates ? value / exchangeRates.buy : 0.0;
+            setAmountToReceive(newAmount);
+        } else {
+            setAmountToReceive(0);
+        }
+        
     };
 
     async function onSubmitClick(event: any) {
@@ -52,10 +57,10 @@ function Exchange() {
     }
 
     useEffect(() => {
-        getCurrentBalance();
     }, [])
 
     useEffect(() => {
+        getCurrentBalance();
         fetchExchangeRate();
 
         const interval = setInterval(() => {
@@ -109,13 +114,13 @@ function Exchange() {
                         id="purchaseDetails"
                         name="purchaseDetails"
                         readOnly
-                        value={`You pay €${amountToPay} and get ~${amountToReceive} BTC`} 
+                        value={!isNaN(amountToPay) ? `You pay €${amountToPay} and get ~${amountToReceive} BTC` : ''} 
                         className='summary-input'
                     />
                     <span onClick={onShowDetailsClick} className="show-summary"> {showPurchaseDetails ? "Hide" : "Show"} purchase details</span>
                 </div>
             </label>
-            {showPurchaseDetails && <TransactionSummary currentBalance={currentBalance} amountToPay={amountToPay} amountToReceive={amountToReceive}/>}
+            {showPurchaseDetails && <TransactionSummary currentBalance={currentBalance} amountToPay={isNaN(amountToPay) ? 0 : amountToPay} amountToReceive={amountToReceive}/>}
 
             <button  onClick={onSubmitClick} type="submit" className="btn">Submit</button>
         </form>
