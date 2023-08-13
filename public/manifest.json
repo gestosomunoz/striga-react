@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Bitcoin exchange",
+  "name": "Small bitcoin exchange app",
   "icons": [
     {
       "src": "favicon.ico",

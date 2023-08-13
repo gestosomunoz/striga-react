@@ -46,7 +46,6 @@ function Exchange() {
         }
     };
 
-
     async function getCurrentBalance() {
         const response = await apiService.getCurrentBalance();
         setCurrentBalance(response.balance);

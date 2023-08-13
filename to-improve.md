@@ -12,6 +12,5 @@
 TODO
 
 Excepciones
-remove console logs
 frontend banner
 write README
