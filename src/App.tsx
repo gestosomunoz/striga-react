@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './assets/styles/Index.css';
-import Exchange from './pages/Exchange';
-import Invoice from './pages/Invoice';
-import Confirmation from './pages/Confirmation';
+import './assets/styles/App.css'
+import Exchange from './pages/exchange/Exchange';
+import Invoice from './pages/invoice/Invoice';
+import Confirmation from './pages/confirmation/Confirmation';
 import NotFound from "./pages/NotFound";
 
 function App() {

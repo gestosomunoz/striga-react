@@ -1,0 +1,18 @@
+.copy-button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    max-width: 60px;
+
+    :hover {
+        background-color: #0056b3;
+    }
+
+    .copy-message {
+        font-size: 10px;
+    }
+}

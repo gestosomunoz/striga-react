@@ -1,14 +1,4 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
-.main-container {
+.confirmation-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,13 +10,15 @@ body {
     width: 500px;
     margin: 50px auto;
     min-height: 200px;
+
+    .confirmation-header {
+        font-size: 24px;
+    }
+    
+    .confirmation-content {
+        font-size: 18px;
+        margin: 10px 0;
+    }
 }
 
-h1 {
-    font-size: 24px;
-}
 
-p {
-    font-size: 18px;
-    margin: 10px 0;
-}

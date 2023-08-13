@@ -1,6 +1,6 @@
 import axios from "axios";
 import { IApiService } from "./IApiService";
-import { ExchangeRateResponse, TransactionStateResponse, CreateTransactionResponse } from "./ApiResponseTypes";
+import { ExchangeRateResponse, TransactionStateResponse, CreateTransactionResponse, AccountBalanceResponse } from "./ApiResponseTypes";
 
 class ApiService implements IApiService {
     private backendUrl: string = 'http://localhost:8000';
@@ -21,6 +21,11 @@ class ApiService implements IApiService {
 
     async getTransactionState(transactionId: string): Promise<TransactionStateResponse> {
         const response = await axios.post(this.backendUrl + '/transaction/' + transactionId);
+        return response.data;
+    }
+
+    async getCurrentBalance(): Promise<AccountBalanceResponse> {
+        const response = await axios.get(this.backendUrl + '/account/balance');
         return response.data;
     }
 }
